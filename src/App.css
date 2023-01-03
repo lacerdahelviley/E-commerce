@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -79,10 +79,10 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 /* Paginas de conteúdo do backend */
-.content-header {
+/* .content-header {
   padding: 15px 0.5rem;
 }
 
@@ -125,11 +125,11 @@
   font-weight: 400;
   display: inline-block;
   width: auto;
-  transition: all 0.5s;
+  transition: all 0.5s; */
   /* Aqui usamos o all, que siginfica que 
       qualquer propriedade vai ser animada no hover!
   */
-  cursor: pointer;
+  /* cursor: pointer;
 }
 
 .btn-default:hover {
@@ -153,4 +153,4 @@
   font-size: 13px;
   text-transform: uppercase;
   padding: 15px;
-}
+} */

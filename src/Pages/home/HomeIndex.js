@@ -1,5 +1,5 @@
-import styles from "./HomeIndex.module.css"
-import logo from "../../components/img/Tora_Logo.png"
+import styles from "./HomeIndex.module.css";
+import logo from "../../components/img/Tora_Logo.png";
 
 function Home() {
   

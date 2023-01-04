@@ -74,16 +74,3 @@ body::-webkit-scrollbar-thumb {
   font-size: 16px;
   height: 15rem;
 }
-
-.car-name{
-  font-size: 12px;
-}
-
-.car-details{
-  font-size: 11px;
-}
-
-.payment-row{
-  font-size: 15px;
-  font-weight: 800;
-}

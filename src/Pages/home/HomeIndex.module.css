@@ -3,3 +3,19 @@
   margin: 20px 40px;
 }
 
+.logo{
+  margin-top: 8px;
+}
+
+.car-name{
+  font-size: 12px;
+}
+
+.car-details{
+  font-size: 11px;
+}
+
+.payment-row{
+  font-size: 15px;
+  font-weight: 800;
+}

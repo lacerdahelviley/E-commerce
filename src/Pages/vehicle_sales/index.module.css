@@ -1,0 +1,93 @@
+.HeaderStepsConteiner{
+    width: 1170px;
+    margin: 0px 100px;
+    position: relative;
+}
+.CssHeaderSteps{
+    width: 280px;
+    display: flex;
+    margin: 0px auto 24px;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    position: relative;
+}
+.CssHeaderStepsItem{
+    width: 68px;
+    display: block;
+    position: relative;
+    user-select: none;
+    pointer-events: none;
+    cursor: none;
+}
+.CssHeaderStepsItemCircle{
+    top: 15px;
+    position: absolute;
+    border: 8px solid #d1d1d7;
+    border-radius: 50%;
+    padding: 8px 14px;
+    color: #d1d1d7;
+}
+.CssHeaderItemCircleSmall{
+    position: absolute;
+    top: 15px;
+    border: 8px solid #d1d1d7;
+    border-radius: 50%;
+    padding: 6px 12px;
+    color: #d1d1d7;
+}
+.CssHeaderStepsLine{
+    position: absolute;
+    border: none;
+    background: #d1d1d7;
+    top: 41px;
+    left: 48px;
+    height: 1px;
+    width: 60px;
+}
+.CssHeaderStepsTitle{
+    position: absolute;
+    top: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #d1d1d7;
+    font-size: large;
+}
+.Subtitle{
+    position: absolute;
+    left: -15px;
+    top: -20px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: large;
+}
+.Final_Title{
+    position: absolute;
+    top: -15px;
+    left: -2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #d1d1d7;
+    font-size: large;
+}
+.w100{
+    margin-top: 10rem;
+    color: #d1d1d7;
+    opacity: .55;
+}
+.SelectionTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #7c7c7d;
+    margin-top: 32px;
+}
+.Form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

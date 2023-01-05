@@ -2,20 +2,35 @@
   display: flex;
   margin: 20px 40px;
 }
-
+.row_no_gutters{
+  display: flex;
+  border: 1px solid lightgrey;
+  border-radius: 5px 15px;
+  background: #cfcfcf39;
+  padding: 5px 5px;
+  align-items: center;
+  justify-content: center;
+}
 .logo{
   margin-top: 8px;
 }
+.car_header{
+  display: flex;
+  justify-content: center;
+  align-items: center;}
 
-.car-name{
-  font-size: 12px;
+.car_name{
+  margin: 4px;
+  font-size: x-large;
+  font-weight: 700;
 }
 
-.car-details{
-  font-size: 11px;
+.car_details{
+  margin: 4px;
+    font-size: smaller;
 }
 
-.payment-row{
-  font-size: 15px;
-  font-weight: 800;
+.payment_row{
+  margin: 4px;
+    font-weight: bolder;
 }

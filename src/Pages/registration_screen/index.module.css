@@ -72,7 +72,7 @@ textarea{
 }
 .picture{
     margin: 7px 7px;
-    border: 2px dotted;
+    border: 2px dashed;
     border-radius: 5px;
     height: 81px;
     width: 81px;

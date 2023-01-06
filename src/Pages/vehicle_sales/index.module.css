@@ -85,9 +85,51 @@
     color: #7c7c7d;
     margin-top: 32px;
 }
+.Conteiner{
+    width: 100%;
+}
 .Form{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+.Form_Row{
+    margin: .5rem 0rem;
+}
+.Form_Row_Year{
+    display: flex;
+    float: left;
+    position: relative;
+    top: 3rem;
+    left: 1.7rem;
+    margin: 1rem 0rem;
+}
+.FormField_FormFieldSelect{
+    width: 30rem;
+    position: relative;
+    top: 35px;
+}
+.FormField_FormField_Select{
+    display: flex;
+    width: calc(50% - 17px);
+    float: left;
+    position: relative;
+}
+.FormFieldLabel{
+    font-size: small;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.Select{
+    width: 100%;
+    height: 2rem;
+    font-size: 1.05rem;
+    margin-top: 0.5rem;
+    border: none;
+    border-bottom: 1px solid #c5c6d0;
+    color: #4d4c59;
+    background: transparent;
 }

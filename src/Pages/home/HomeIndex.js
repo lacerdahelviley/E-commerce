@@ -1,21 +1,10 @@
 import style from "./HomeIndex.module.css";
-import logo from "../../components/img/Tora_Logo.png";
 
 function Home() {
 
   return (
     <div className="main">
-      <div className="header">
-        <div>
-          <img className="logo" src={logo} 
-          alt="Home" />
-        </div>
-        <div className="buttons">
-          <button className="button1">Button 1</button>
-          <button className="button2">Login</button>
-        </div>
-      </div>
-      <div className={style.conteiner}>
+            <div className={style.conteiner}>
         <div className="main">
           <div className={style.row_no_gutters}>
             <div className="vehicle">

@@ -1,19 +1,8 @@
-import Logo from "../../components/img/Tora_Logo.png"
 import style from "./index.module.css"
 function Registration (){
 
     return(
         <div className="main">
-            <div className="header">
-                <div>
-                    <img  className="logo" src={Logo} alt="Home" />
-                </div>
-                <div className="buttons">
-                    <button className="button1">BTN1</button>
-                    <button className="button1">BTN2</button>
-                    <button className="button2">BTN3</button>
-                </div>
-            </div>
             <div>
                 <h3 className="TitleRegistration">Title</h3>
             </div>

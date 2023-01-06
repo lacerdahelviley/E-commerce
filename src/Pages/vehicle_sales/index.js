@@ -1,18 +1,9 @@
-import logo from "../../components/img/Tora_Logo.png";
-import style from "./index.module.css"
+import style from "./index.module.css";
 
 function Sales() {
   return (
     <div className="main">
-      <div className="header">
-        <div>
-          <img className="logo" src={logo} alt="Home"></img>
-        </div>
-        <div className="buttons">
-          <button className="button1">BTN</button>
-          <button className="button2">BTN2</button>
-        </div>
-      </div>
+      
       <div className={style.HeaderStepsContainer}>
         <div className={style.CssHeaderSteps}>
           <div className={style.CssHeaderStepsItem}>
@@ -30,8 +21,7 @@ function Sales() {
             </span>
             <span className={style.CssHeaderStepsLine}></span>
             <span className={style.CssHeaderStepsTitle}>
-              <p className={style.Subtitle}>Informações 
-              adicionais</p>
+              <p className={style.Subtitle}>Informações adicionais</p>
             </span>
           </div>
           <div className={style.CssHeaderStepsItem}>
@@ -39,7 +29,9 @@ function Sales() {
               <span className={style.CssHeaderItemCircleSmall}>3</span>
               <span className={style.CssHeaderItemCircleMedium}></span>
             </span>
-            <span className={style.CssHeaderStepsTitle}><p className={style.Final_Title}>Finalizar</p></span>
+            <span className={style.CssHeaderStepsTitle}>
+              <p className={style.Final_Title}>Finalizar</p>
+            </span>
           </div>
         </div>
       </div>
@@ -49,14 +41,54 @@ function Sales() {
       <div className={style.Conteiner}>
         <h1 className={style.SelectionTitle}>Dê início ao seu anúncio!</h1>
         <div>
-            <div className={style.Form}>
-                <div className={style.Form_Row}>
-                    <div className={style.FormField_FormFieldSelect}>
-                        <label className={style.FormFieldLabel}>Marca</label>
-                        <select name="make"></select>
-                    </div>
-                </div>
+          <div className={style.Form}>
+            <div className={style.Form_Row}>
+              <div className={style.FormField_FormFieldSelect}>
+                <label className={style.FormFieldLabel}>Marca</label>
+                <input className={style.Select} type="name" placeholder="Insira a marca do veículo" required/>
+              </div>
             </div>
+            <div className={style.Form_Row}>
+              <div className={style.FormField_FormFieldSelect}>
+                <label className={style.FormFieldLabel}>Modelo</label>
+                <select className={style.Select} name="model">
+                  <option value>Escolha um modelo</option>
+                </select>
+              </div>
+            </div>
+            <div className={style.Form_Row_Year}>
+              <div className={style.FormField_FormField_Select}>
+                <label className={style.FormFieldLabel}>Ano do modelo</label>
+                <select className={style.Select} name="yearmodel">
+                  <option value>Escolha um ano</option>
+                </select>
+              </div>
+              <div className={style.FormField_FormField_Select}>
+                <label className={style.FormFieldLabel}>
+                  Ano de fabricação
+                </label>
+                <select className={style.Select} name="yearfabrication">
+                  <option value>Escolha um ano</option>
+                </select>
+              </div>
+            </div>
+            <div className={style.Form_Row}>
+              <div className={style.FormField_FormFieldSelect}>
+                <label className={style.FormFieldLabel}>Cor Predominante</label>
+                <select className={style.Select} name="color">
+                  <option value>Escolha uma cor</option>
+                </select>
+              </div>
+            </div>
+            <div className={style.Form_Row}>
+              <div className={style.FormField_FormFieldSelect}>
+                <label className={style.FormFieldLabel}>Cor Secundária</label>
+                <select className={style.Select} name="color">
+                  <option value>Escolha uma cor</option>
+                </select>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

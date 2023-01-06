@@ -97,24 +97,39 @@
 .Form_Row{
     margin: .5rem 0rem;
 }
-.Form_Row_Year{
+.Form_Row_Radio{
     display: flex;
     float: left;
     position: relative;
     top: 3rem;
+    margin: 1rem 0rem;
+    font-size: smaller;
+}
+.SubtitleH3{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 3rem;
+    margin-right: 17rem;
+}
+.Form_Row_Year{
+    display: flex;
+    float: left;
+    position: relative;
+    top: 0rem;
     left: 1.7rem;
     margin: 1rem 0rem;
 }
 .FormField_FormFieldSelect{
     width: 30rem;
     position: relative;
-    top: 35px;
+    top: 0px;
 }
 .FormField_FormField_Select{
     display: flex;
     width: calc(50% - 17px);
     float: left;
     position: relative;
+    align-items: center;
 }
 .FormFieldLabel{
     font-size: small;

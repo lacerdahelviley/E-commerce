@@ -3,7 +3,6 @@ import style from "./index.module.css";
 function Sales() {
   return (
     <div className="main">
-      
       <div className={style.HeaderStepsContainer}>
         <div className={style.CssHeaderSteps}>
           <div className={style.CssHeaderStepsItem}>
@@ -42,10 +41,25 @@ function Sales() {
         <h1 className={style.SelectionTitle}>Dê início ao seu anúncio!</h1>
         <div>
           <div className={style.Form}>
+            <div className={style.Form_Row_Radio}>
+              <div className={style.FormField_FormField_Select}>
+                <label className={style.FormFieldLabel}>Condição</label>
+                <input className={style.Select} type="radio" /> Novo
+                <input className={style.Select} type="radio" /> Seminovo
+              </div>
+            </div>
+            <div className={style.SubtitleH3}>
+              <h3>Dados do veículo</h3>
+            </div>
             <div className={style.Form_Row}>
               <div className={style.FormField_FormFieldSelect}>
                 <label className={style.FormFieldLabel}>Marca</label>
-                <input className={style.Select} type="name" placeholder="Insira a marca do veículo" required/>
+                <input
+                  className={style.Select}
+                  type="name"
+                  placeholder="Insira a marca do veículo"
+                  required
+                />
               </div>
             </div>
             <div className={style.Form_Row}>

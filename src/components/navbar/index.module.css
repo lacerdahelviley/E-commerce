@@ -19,17 +19,44 @@ body::-webkit-scrollbar-thumb {
   background: #272727a8;
   border-radius: 15px;
 }
-.header {
+
+.HeaderContents {
+  background: linear-gradient(192deg, #155226, #185c3e, #16463f);
   display: flex;
   height: 50px;
   justify-content: space-evenly;
-  align-items: center;
-  background: linear-gradient(192deg, #155226, #185c3e, #16463f);
+  width: 100%;
+  padding: 0 20px;
+  border-bottom: 1px solid;
 }
-.HeaderContents {
+.HeaderButtons {
   display: flex;
   align-items: center;
-  justify-content: center;
+}
+.HeaderSeparator {
+  list-style: none;
+  display: flex;
+  flex-flow: row nowrap;
+}
+.HeaderTopic {
+  padding: 15px 10px;
+}
+@media (max-width: 768px) {
+  .HeaderButtons {
+    display: none;
+    padding-right: 15px;
+    flex-flow: column nowrap;
+    background-color: #185c3e;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: auto;
+    width: 300px;
+    padding-top: 3.5rem;
+  }
+  .HeaderTopic {
+    padding-right: 7rem;
+  }
 }
 .logo {
   height: 40px;
@@ -37,11 +64,6 @@ body::-webkit-scrollbar-thumb {
   cursor: pointer;
   opacity: 0.7;
   transition: all 0.3s ease-in-out;
-}
-.logo:hover,
-.loupe:hover,
-.ShoppingBag:hover {
-  opacity: 1;
 }
 .loupe {
   width: 14px;
@@ -55,10 +77,11 @@ body::-webkit-scrollbar-thumb {
   opacity: 0.7;
   cursor: pointer;
 }
-.HeaderButtons {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+.Logout {
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+  cursor: pointer;
 }
 .button {
   cursor: pointer;
@@ -76,23 +99,21 @@ body::-webkit-scrollbar-thumb {
   z-index: 1;
   transition: all 0.3s ease-in-out;
 }
-.button:hover {
+.button:hover,
+.logo:hover,
+.loupe:hover,
+.ShoppingBag:hover,
+.Logout:hover {
   opacity: 1;
 }
 .button:active,
 .loupe:active,
-.ShoppingBag:active {
+.ShoppingBag:active,
+.Logout:active {
   opacity: 0.4;
 }
 .main {
   padding-bottom: 2.5rem;
   font-size: 16px;
   height: 15rem;
-}
-.Logout {
-  width: 20px;
-  height: 20px;
-  opacity: 0.7;
-  cursor: pointer;
-  margin-left: 23px;
 }

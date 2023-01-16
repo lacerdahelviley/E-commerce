@@ -43,7 +43,8 @@ body::-webkit-scrollbar-thumb {
 }
 @media (max-width: 768px) {
   .HeaderButtons {
-    display: none;
+    /* display: none; */
+    display: flex;
     padding-right: 15px;
     flex-flow: column nowrap;
     background-color: #185c3e;
@@ -51,7 +52,7 @@ body::-webkit-scrollbar-thumb {
     top: 0;
     right: 0;
     height: auto;
-    width: 300px;
+    width: auto;
     padding-top: 3.5rem;
   }
   .HeaderTopic {

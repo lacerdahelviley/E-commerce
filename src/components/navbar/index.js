@@ -1,16 +1,19 @@
+import React, { useState} from "react";
 import style from "./index.module.css";
 import logo from "../img/Tora_Logo.png";
 import loupe from "../img/loupe.png";
 import bag from "../img/Shopping_Bag.png";
 import Logout from "../img/Logout.png";
 import { Link } from "react-router-dom";
+import Burguer from "./BurguerMenu/index";
 
 function NavBar() {
+  const [open, setOpen] = useState(false)
   return (
     <>
       <div className={style.header}>
         <div className={style.HeaderContents}>
-          <div className={style.HeaderButtons}>
+          <div className={style.HeaderButtons}  >
             <ul className={style.HeaderSeparator}>
               <li className={style.HeaderTopic}>
                 <Link to="/">
@@ -63,6 +66,7 @@ function NavBar() {
           </div>
         </div>
       </div>
+      <Burguer open={open} setOpen={setOpen} />
     </>
   );
 }

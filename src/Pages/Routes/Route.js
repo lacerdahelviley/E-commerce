@@ -7,6 +7,7 @@ import Login from "../login/Index";
 import Registration from "../registration_screen/index";
 import SalesVehicle from "../vehicle_sales/index";
 import SalesVehicleInfo from "../vehicle_sales/AdditionalInfo";
+import Client from "../client_screen/client";
 
 const ApplicationRoutes = () => {
   return (
@@ -22,6 +23,7 @@ const ApplicationRoutes = () => {
             component={SalesVehicleInfo}
             path="/vehicle_sales/AdditionalInfo"
           />
+          <Route element={<Client />} path="/client_screen" />
         </Routes>
       </BrowserRouter>
     </>

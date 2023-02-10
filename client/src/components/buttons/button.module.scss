@@ -1,0 +1,22 @@
+.button{
+border: none;
+border-radius: 20px;
+background: transparent;
+color: #fff;
+font-size: 15px;
+font-weight: 400;
+width: auto;
+cursor: pointer;
+&:hover {
+  background: #d0d0d024;
+}
+&:active {
+  opacity: 0.5;
+}
+
+}
+@media only screen and (max-width: 768px){
+    .button{
+        padding: 20px;
+    }
+}

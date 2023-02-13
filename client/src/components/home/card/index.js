@@ -7,7 +7,7 @@ export default function Card({Style, veiculos}) {
     <div className={Style.container__conteudo}>
       {veiculos.map((veiculo) => (
         <Cards
-          key={veiculo.nome}
+          // key={veiculo.nome}
           nome={veiculo.nome}
           ano={veiculo.ano}
           imagem={veiculo.imagem}

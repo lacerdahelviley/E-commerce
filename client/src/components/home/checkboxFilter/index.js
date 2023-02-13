@@ -9,8 +9,14 @@ export default function CheckboxFilter({
 }) {
   return (
     <div className={style.filtro}>
-      {automoveis.map((marca) => (
-        <Aside marca={marca} onClick={() => filtrarVeiculos(marca)}/>
+      {automoveis.map((marca, index) => (
+        <Aside
+          key={marca + index}
+          setVeiculos={setVeiculos}
+          marca={marca}
+          filtrarVeiculos={filtrarVeiculos}
+          automoveis={automoveis}
+        />
       ))}
     </div>
   );

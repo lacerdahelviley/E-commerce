@@ -2,11 +2,11 @@
   width: 300px;
   height: 400px;
   box-sizing: border-box;
-  cursor: pointer;
   background: linear-gradient(180deg, #fff 30%, #00652e70);
   box-shadow: 5px 5px 15px rgb(0 0 0 / 40%);
   border-radius: 10px;
   transition: all ease-in-out 775ms;
+  cursor: pointer;
   &:hover{
     transform:translateY(-6px);
     box-shadow: 5px 5px 15px rgb(0 0 0 / 75%);

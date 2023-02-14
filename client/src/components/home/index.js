@@ -5,13 +5,17 @@ import CheckboxFilter from "./checkboxFilter/index";
 import Card from "./card";
 import veiculos from "./veiculos.json";
 
+
 function Home() {
-  const [isVeiculos, setVeiculos] = useState(veiculos);
+  const [isVeiculos] = useState(veiculos);
+  const [isVeiculoFiltrado, setVeiculoFiltrado] = useState([]);
   const automoveis = [...new Set(veiculos.map((item) => item.marca))];
 
   const filtrarVeiculos = (marca) => {
-    const veiculoFiltrado = veiculos.filter((item) => item.marca === marca);
-    setVeiculos(veiculoFiltrado);
+    if (isVeiculos) {
+      const resultado = veiculos.filter((item) => item.marca === marca);
+      setVeiculoFiltrado([...isVeiculoFiltrado, ...resultado])
+    }
   };
 
   return (
@@ -21,11 +25,11 @@ function Home() {
         <CheckboxFilter
           style={Style}
           automoveis={automoveis}
-          veiculos={veiculos}
-          setVeiculos={setVeiculos}
+          isVeiculoFiltrado={isVeiculoFiltrado}
+          setVeiculoFiltrado={setVeiculoFiltrado}
           filtrarVeiculos={filtrarVeiculos}
         />
-        <Card Style={Style} veiculos={isVeiculos} />
+        <Card Style={Style} veiculos={isVeiculoFiltrado} />
       </div>
     </>
   );

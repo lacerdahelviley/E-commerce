@@ -3,7 +3,8 @@ import Aside from "../../aside";
 
 export default function CheckboxFilter({
   style,
-  setVeiculos,
+  isVeiculoFiltrado,
+  setVeiculoFiltrado,
   automoveis,
   filtrarVeiculos,
 }) {
@@ -12,7 +13,8 @@ export default function CheckboxFilter({
       {automoveis.map((marca, index) => (
         <Aside
           key={marca + index}
-          setVeiculos={setVeiculos}
+          isVeiculoFiltrado={isVeiculoFiltrado}
+          setVeiculoFiltrado={setVeiculoFiltrado}
           marca={marca}
           filtrarVeiculos={filtrarVeiculos}
           automoveis={automoveis}

@@ -1,7 +1,12 @@
 import style from "./aside.module.scss";
-import veiculos from "../home/veiculos.json"
+// import veiculos from "../home/veiculos.json"
 
-const Aside = ({ marca, filtrarVeiculos, setVeiculos }) => {
+const Aside = ({
+  marca,
+  filtrarVeiculos,
+  isVeiculoFiltrado,
+  setVeiculoFiltrado,
+}) => {
   return (
     <div className={style.container}>
       <label>
@@ -12,8 +17,10 @@ const Aside = ({ marca, filtrarVeiculos, setVeiculos }) => {
             if (e.target.checked) {
               filtrarVeiculos(marca);
             } else {
-                console.log(veiculos)
-              return setVeiculos(veiculos);
+              const resultado = isVeiculoFiltrado.filter(
+                (item) => item.marca !== marca
+              );
+              setVeiculoFiltrado([...resultado]);
             }
           }}
         />

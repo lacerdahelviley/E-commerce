@@ -10,16 +10,21 @@ export default function CheckboxFilter({
 }) {
   return (
     <div className={style.filtro}>
-      {automoveis.map((marca, index) => (
-        <Aside
-          key={marca + index}
-          isVeiculoFiltrado={isVeiculoFiltrado}
-          setVeiculoFiltrado={setVeiculoFiltrado}
-          marca={marca}
-          filtrarVeiculos={filtrarVeiculos}
-          automoveis={automoveis}
-        />
-      ))}
+      <label className={style.borda__filtro}>
+        <h3 className={style.titulo__filtro}>
+        Marca
+        </h3>
+        {automoveis.map((marca, index) => (
+          <Aside
+            key={marca + index}
+            isVeiculoFiltrado={isVeiculoFiltrado}
+            setVeiculoFiltrado={setVeiculoFiltrado}
+            marca={marca}
+            filtrarVeiculos={filtrarVeiculos}
+            automoveis={automoveis}
+          />
+        ))}
+      </label>
     </div>
   );
 }

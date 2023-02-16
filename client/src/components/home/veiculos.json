@@ -7,21 +7,6 @@
     "imagem": "https://img.olx.com.br/images/84/848238421872924.jpg"
   },
   {
-    "nome": "Scania G500 XT 8x4",
-    "marca": "Scania",
-    "ano": "2019/19",
-    "valor": "R$ 745.000,00",
-    "imagem": "https://i.ytimg.com/vi/Y-jjCy6lLWY/maxresdefault.jpg"
-  },
-  {
-    "nome": "Scania G440 6x4",
-    "marca": "Scania",
-    "ano": "2020/20",
-    "valor": "R$ 630.000,00",
-    "imagem":
-      "https://cdn.salaodocarro.com.br/_upload/caminhoes/2020/05/13/scania-g-440-2013-branco-2226-0.jpg"
-  },
-  {
     "nome": "Mercedes Benz actros 6x4",
     "marca": "Mercedes Benz",
     "ano": "2021/22",
@@ -44,22 +29,6 @@
     "valor": "R$ 410.000,00",
     "imagem":
       "https://s3.amazonaws.com/trucadao-production-eua/system/imagens_anuncios/imagems/001/255/597/big_thumb/cdd229e38d.jpg?1657287881"
-  },
-  {
-    "nome": "Mercedes Benz MB2544",
-    "marca": "Mercedes Benz",
-    "ano": "2010/10",
-    "valor": "R$ 210.000,00",
-    "imagem":
-      "https://s3.amazonaws.com/trucadao-production-eua/system/imagens_anuncios/imagems/001/330/490/big_thumb/defba048a7.jpg?1674746455"
-  },
-  {
-    "nome": "Volvo FM370",
-    "marca": "Volvo",
-    "ano": "2011/11",
-    "valor": "R$ 200.000,00",
-    "imagem":
-      "https://s3.amazonaws.com/trucadao-production-eua/system/imagens_anuncios/imagems/001/275/830/big_thumb/9fceded373.jpg?1661607576"
   },
   {
     "nome": "Jeep Compass",

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Style from "./header.module.scss";
-import Icons from "../icons";
-import Logo from "../img/ToraLogo.png";
+import Icons from "components/icons";
+import Logo from "components/img/ToraLogo.png";
 
 const HeaderContainer = styled.div`
   @media only screen and (max-width: 768px) {

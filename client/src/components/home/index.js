@@ -1,21 +1,31 @@
 import React, { useState } from "react";
 import Style from "./home.module.scss";
-import Burger from "../menuBurger";
-import CheckboxFilter from "./checkboxFilter/index";
+import Burger from "components/menuBurger";
 import Card from "./card";
 import veiculos from "./veiculos.json";
-
+import CheckboxFilter from "./checkboxFilter";
 
 function Home() {
   const [isVeiculos] = useState(veiculos);
-  const [isVeiculoFiltrado, setVeiculoFiltrado] = useState([]);
+  const [isVeiculoFiltrado, setVeiculoFiltrado] = useState(isVeiculos);
+  const [isContadorVeiculos, setContadorVeiculos] = useState(0);
   const automoveis = [...new Set(veiculos.map((item) => item.marca))];
 
   const filtrarVeiculos = (marca) => {
-    if (isVeiculos) {
-      const resultado = veiculos.filter((item) => item.marca === marca);
-      setVeiculoFiltrado([...isVeiculoFiltrado, ...resultado])
+    if (marca === "ResetViews") {
+      setVeiculoFiltrado(console.log(veiculos));
+    } else {
+      if (isVeiculoFiltrado) {
+        const resultado = veiculos.filter((item) => item.marca === marca);
+        if (isContadorVeiculos === 0) {
+          setContadorVeiculos(isContadorVeiculos + 1);
+          setVeiculoFiltrado(resultado);
+          return;
+        }
+        setVeiculoFiltrado([...isVeiculoFiltrado, ...resultado]);
+      }
     }
+    // console.log(isVeiculoFiltrado)
   };
 
   return (

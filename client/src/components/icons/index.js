@@ -1,7 +1,7 @@
-import Search from "../img/loupe.png";
+import Search from "components/img/loupe.png";
 import Style from "./icons.module.scss";
-import Button from "../buttons";
-import TextField from "../textField";
+import Button from "components/buttons";
+import TextField from "components/textField";
 
 
 const Icons = (props) => {

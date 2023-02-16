@@ -11,15 +11,21 @@ function Home() {
   const [isContadorVeiculos, setContadorVeiculos] = useState(0);
   const automoveis = [...new Set(veiculos.map((item) => item.marca))];
 
-  const filtrarVeiculos = (marca) => {
+  const filtrarVeiculos = (marca, resultado) => {
     if (marca === "ResetViews") {
-      setVeiculoFiltrado(console.log(veiculos));
+      setVeiculoFiltrado([...resultado]);
+      if(isContadorVeiculos === 1){
+        setContadorVeiculos(isContadorVeiculos - 1)
+      }
+      if(resultado.length === 0){
+        setVeiculoFiltrado([...isVeiculos])
+      }
     } else {
+      const resultado = veiculos.filter((item) => item.marca === marca);
+      setVeiculoFiltrado(resultado);
       if (isVeiculoFiltrado) {
-        const resultado = veiculos.filter((item) => item.marca === marca);
         if (isContadorVeiculos === 0) {
           setContadorVeiculos(isContadorVeiculos + 1);
-          setVeiculoFiltrado(resultado);
           return;
         }
         setVeiculoFiltrado([...isVeiculoFiltrado, ...resultado]);

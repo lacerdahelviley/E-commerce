@@ -15,13 +15,11 @@ const Aside = ({
           onChange={(e) => {
             if (e.target.checked) {
               filtrarVeiculos(marca);
-            } 
-            else {
-               const resultado = isVeiculoFiltrado.filter(
-                 (item) => item.marca !== marca
-                 );
-                 filtrarVeiculos("ResetViews")
-                 setVeiculoFiltrado([...resultado]);
+            } else {
+              const resultado = isVeiculoFiltrado.filter(
+                (item) => item.marca !== marca
+              );
+              filtrarVeiculos("ResetViews", resultado);
             }
           }}
         />

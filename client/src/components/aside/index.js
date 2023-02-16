@@ -4,7 +4,6 @@ const Aside = ({
   marca,
   filtrarVeiculos,
   isVeiculoFiltrado,
-  setVeiculoFiltrado,
 }) => {
   return (
     <div className={style.container}>

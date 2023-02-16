@@ -14,11 +14,11 @@ function Home() {
   const filtrarVeiculos = (marca, resultado) => {
     if (marca === "ResetViews") {
       setVeiculoFiltrado([...resultado]);
-      if(isContadorVeiculos === 1){
-        setContadorVeiculos(isContadorVeiculos - 1)
+      if (isContadorVeiculos === 1) {
+        setContadorVeiculos(isContadorVeiculos - 1);
       }
-      if(resultado.length === 0){
-        setVeiculoFiltrado([...isVeiculos])
+      if (resultado.length === 0) {
+        setVeiculoFiltrado([...isVeiculos]);
       }
     } else {
       const resultado = veiculos.filter((item) => item.marca === marca);
@@ -31,7 +31,6 @@ function Home() {
         setVeiculoFiltrado([...isVeiculoFiltrado, ...resultado]);
       }
     }
-    // console.log(isVeiculoFiltrado)
   };
 
   return (

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Style from "./header.module.scss";
 import Icons from "components/icons";
 import Logo from "components/img/ToraLogo.png";
+import { NavLink } from "react-router-dom";
 
 const HeaderContainer = styled.div`
   @media only screen and (max-width: 768px) {
@@ -22,9 +23,11 @@ const Header = ({ open }) => {
     <>
       <header className={Style.header__container}>
         <div className={Style.logo__container}>
-          <img src={Logo} alt="Logomarca Tora Transportes" />
-          <strong>Tora</strong>
-          Seminovos
+          <NavLink className={Style.link} to="/">
+            <img src={Logo} alt="Logomarca Tora Transportes" />
+            <strong>Tora</strong>
+            Seminovos
+          </NavLink>
         </div>
         <HeaderContainer className={Style.header__container__icons} open={open}>
           <Icons />

@@ -14,12 +14,14 @@ const Way = () => {
         <Routes>
           <Route element={<Home open={open} setOpen={setOpen} />} path="/">
             <Route element={<Container />} index />
-            <Route element={<Login />} path="/login" />
             <Route
               element={<VehicleRegistration open={open} setOpen={setOpen} />}
               path="/vehicleRegistration"
             />
           </Route>
+        </Routes>
+        <Routes>
+          <Route element={<Login />} path="/login" />
         </Routes>
       </BrowserRouter>
     </>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Header from "components/header";
 
@@ -40,8 +40,7 @@ const BurgerMenu = styled.div`
 `;
 
 
-const Burger = () => {
-  const [open, setOpen] = useState(false);
+const Burger = ({open, setOpen}) => {
   return (
     <>
       <BurgerMenu open={open} onClick={() => setOpen(!open)}>

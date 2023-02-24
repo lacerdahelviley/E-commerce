@@ -1,0 +1,26 @@
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../img/BannerTora.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.container__form{
+    background: #fff;
+    height: 25rem;
+    width: 25rem;
+    padding: 45px 10px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 15px rgb(0 0 0 / 75%);
+}
+.Check{
+    cursor: pointer;
+}
+@media (max-width: 425px) {
+    .main{
+        background-image: url("../img/banner_transportes.jpg");
+    }
+}

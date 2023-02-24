@@ -9,7 +9,7 @@ const HeaderContainer = styled.div`
     top: 0;
     right: 0;
     flex-flow: column nowrap;
-    height: 38rem;
+    height: 30rem;
     width: 23rem;
     padding-top: 3.5rem;
     background-color: #00652e;

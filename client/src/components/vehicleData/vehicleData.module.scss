@@ -1,0 +1,23 @@
+.containerDadosVeiculos{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dadosVeiculosColuna{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 18px;
+}
+
+.dadosVeiculosColuna, .strong{
+    font-size: 18px;
+    font-weight: 600;
+    color: #00652e;
+}
+
+.dadosVeiculosColuna, p{
+    font-size: 16px;
+    font-weight: 300;
+    color: #000;
+}

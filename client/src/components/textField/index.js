@@ -10,10 +10,10 @@ const Input = styled.input`
   border: none;
 `;
 
-const TextField = ({placeholder}) => {
+const TextField = ({placeholder, type}) => {
   return(
     <>
-    <Input placeholder={placeholder}/>
+    <Input  type={type} placeholder={placeholder}/>
     </>
   )
 }

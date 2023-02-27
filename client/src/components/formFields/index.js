@@ -9,10 +9,10 @@ export function Title ({title, Style}){
     return <h3 className={Style.form__title}>{title}</h3>
 }
 
-export default function FormFields({ placeholder }) {
+export function FormFields({ placeholder, disabled }) {
   return (
     <Form.Group className="mb-3" controlId="formGroupEmail">
-      <Form.Control type="text" placeholder={placeholder} />
+      <Form.Control type="text" placeholder={placeholder} disabled={disabled} />
     </Form.Group>
   );
 }
@@ -41,7 +41,7 @@ export function TextArea({ Style, placeholder, label }) {
       <Form.Control
         as="textarea"
         placeholder={placeholder}
-        style={{ height: "44px", width: "165px" }}
+        style={{ height: "60px", width: "100%" }}
         className={Style.form__control__size}
       />
     </FloatingLabel>

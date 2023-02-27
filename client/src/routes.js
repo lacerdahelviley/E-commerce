@@ -4,6 +4,7 @@ import Login from "components/login";
 import Home from "components/home";
 import VehicleRegistration from "components/vehicleRegistration";
 import Container from "components/container";
+import SalesRegister from "components/salesRegister";
 
 const Way = () => {
   const [open, setOpen] = useState(false);
@@ -17,6 +18,10 @@ const Way = () => {
             <Route
               element={<VehicleRegistration open={open} setOpen={setOpen} />}
               path="/vehicleRegistration"
+            />
+            <Route
+              element={<SalesRegister open={open} setOpen={setOpen} />}
+              path="/salesRegister"
             />
           </Route>
         </Routes>

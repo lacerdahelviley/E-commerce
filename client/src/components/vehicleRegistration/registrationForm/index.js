@@ -1,12 +1,13 @@
 import React from "react";
 import Style from "./registrationForm.module.scss";
-import FormFields, {
+import {
   ColFields,
   ImageSelector,
   TextArea,
   Buttons,
   Title,
-} from "./formFields";
+  FormFields,
+} from "../../formFields";
 
 export default function RegistrationForm() {
   return (
@@ -14,7 +15,7 @@ export default function RegistrationForm() {
       <div className={Style.container}>
         <div className={Style.form__container}>
           <label className={Style.form__title__field}>
-            <Title title={"Cadastro de veículos"} Style={Style}/>
+            <Title title={"Cadastro de veículos"} Style={Style} />
             <form className={Style.form__field}>
               <div className={Style.form}>
                 <FormFields placeholder={"Nome do Veiculo"} />
@@ -49,25 +50,32 @@ export default function RegistrationForm() {
               <div className={Style.form}>
                 <div className={Style.form__media}>
                   <FormFields placeholder={"Entre-eixos"} />
+                  <FormFields placeholder={"Placa do veículo"} />
                   <ColFields
                     placeholder={"Cap. máx. combustível"}
                     Style={Style}
                     unidadeMedida={"L"}
                   />
                 </div>
-                <div className={Style.form__media__textarea}>
-                  <TextArea
-                    placeholder={"Informações opcionais"}
-                    label={"Informações opcionais"}
+                  <ColFields
+                    placeholder={"Valor"}
                     Style={Style}
+                    unidadeMedida={"R$"}
                   />
-                  <TextArea
-                    placeholder={"Informações adicionais"}
-                    label={"Informações adicionais"}
-                    Style={Style}
-                  />
-                </div>
               </div>
+              <div className={Style.form__media__textarea}>
+                <TextArea
+                  placeholder={"Informações opcionais"}
+                  label={"Informações opcionais"}
+                  Style={Style}
+                />
+                <TextArea
+                  placeholder={"Informações adicionais"}
+                  label={"Informações adicionais"}
+                  Style={Style}
+                />
+              </div>
+
               <div className={Style.buttons__field}>
                 <ImageSelector label={"Selecionar múltiplas imagens"} />
                 <Buttons
@@ -75,7 +83,6 @@ export default function RegistrationForm() {
                   variant={"outline-danger"}
                   name={"Limpar"}
                 />{" "}
-                {" "}
                 <Buttons
                   type={"submit"}
                   variant={"outline-success"}

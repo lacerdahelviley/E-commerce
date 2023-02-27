@@ -16,6 +16,9 @@ const Icons = () => {
           <NavLink className={Style.buttons} to="vehicleRegistration">Cadastro de veiculos</NavLink>
         </Button>
         <Button>
+          <NavLink className={Style.buttons} to="salesRegister">Cadastro de vendas</NavLink>
+        </Button>
+        <Button>
           <NavLink className={Style.buttons} to="login">Login</NavLink>
         </Button>
       </div>

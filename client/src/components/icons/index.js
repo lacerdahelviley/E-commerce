@@ -4,7 +4,7 @@ import Button from "components/buttons";
 import TextField from "components/textField";
 import { NavLink } from "react-router-dom";
 
-const Icons = () => {
+export default function Icons () {
   return (
     <>
       <div className={Style.container}>
@@ -13,16 +13,16 @@ const Icons = () => {
           <img src={Search} alt="Lupa de pesquisa" />
         </div>
         <Button>
-          <NavLink className={Style.buttons} to="vehicleRegistration">Cadastro de veiculos</NavLink>
+          <NavLink className={Style.buttons} to="/vehicleRegistration">Cadastro de veiculos</NavLink>
         </Button>
         <Button>
-          <NavLink className={Style.buttons} to="salesRegister">Cadastro de vendas</NavLink>
+          <NavLink className={Style.buttons} to="/salesRegister">Cadastro de vendas</NavLink>
         </Button>
         <Button>
-          <NavLink className={Style.buttons} to="login">Login</NavLink>
+          <NavLink className={Style.buttons} to="/login">Login</NavLink>
         </Button>
       </div>
     </>
   );
 };
-export default Icons;
+

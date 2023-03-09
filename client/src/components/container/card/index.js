@@ -2,9 +2,9 @@ import React from "react";
 import Cards from "components/cards";
 
 
-export default function Card({Style, veiculos}) {
+export default function Card({style, veiculos}) {
   return (
-    <div className={Style.container__conteudo}>
+    <div className={style.container__conteudo}>
       {veiculos.map((veiculo, index) => (
         <Cards
           key={veiculo.nome + index}

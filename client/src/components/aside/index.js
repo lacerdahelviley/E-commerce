@@ -3,7 +3,7 @@ import style from "./aside.module.scss";
 const Aside = ({
   marca,
   filtrarVeiculos,
-  isVeiculoFiltrado,
+  veiculoFiltrado,
 }) => {
   return (
     <div className={style.container}>
@@ -15,10 +15,10 @@ const Aside = ({
             if (e.target.checked) {
               filtrarVeiculos(marca);
             } else {
-              const resultado = isVeiculoFiltrado.filter(
+              const resultadoFiltro = veiculoFiltrado.filter(
                 (item) => item.marca !== marca
               );
-              filtrarVeiculos("ResetViews", resultado);
+              filtrarVeiculos("ResetViews", resultadoFiltro);
             }
           }}
         />

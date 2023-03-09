@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Style from "./header.module.scss";
-import Icons from "components/icons";
+import Icons  from "components/icons";
 import Logo from "components/img/ToraLogo.png";
 import { NavLink } from "react-router-dom";
 

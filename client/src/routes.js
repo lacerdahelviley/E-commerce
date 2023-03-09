@@ -13,23 +13,16 @@ const Way = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route element={<Home open={open} setOpen={setOpen} />} path="/">
-            <Route element={<Container />} index />
-            <Route
-              element={<VehicleRegistration open={open} setOpen={setOpen} />}
-              path="/vehicleRegistration"
-            />
-            <Route
-              element={<SalesRegister open={open} setOpen={setOpen} />}
-              path="/salesRegister"
-            />
+          <Route path="/" element={<Home open={open} setOpen={setOpen} />}>
+            <Route index element={<Container />} />
+            <Route path="vehicleRegistration" element={<VehicleRegistration open={open} setOpen={setOpen} />} />
+            <Route path="salesRegister" element={<SalesRegister open={open} setOpen={setOpen} />} />
           </Route>
-        </Routes>
-        <Routes>
-          <Route element={<Login />} path="/login" />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </>
   );
 };
+
 export default Way;

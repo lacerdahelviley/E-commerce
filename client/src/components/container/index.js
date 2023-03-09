@@ -1,48 +1,62 @@
-import React, { useState } from 'react'
-import veiculos from "components/json/veiculos.json"
-import Style from "./container.module.scss"
-import CheckboxFilter from './checkboxFilter';
-import Card from './card';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Style from "./container.module.scss";
+import CheckboxFilter from "./checkboxFilter";
+import Card from "./card";
 
 export default function Container() {
-    const [isVeiculos] = useState(veiculos);
-    const [isVeiculoFiltrado, setVeiculoFiltrado] = useState(isVeiculos);
-    const [isContadorVeiculos, setContadorVeiculos] = useState(0);
-    const automoveis = [...new Set(veiculos.map((item) => item.marca))];
-    
-    
-    const filtrarVeiculos = (marca, resultado) => {
-        if (marca === "ResetViews") {
-            setVeiculoFiltrado([...resultado]);
-            if (isContadorVeiculos === 1) {
-                setContadorVeiculos(isContadorVeiculos - 1);
-            }
-            if (resultado.length === 0) {
-                setVeiculoFiltrado([...isVeiculos]);
-            }
-        } else {
-            const resultado = veiculos.filter((item) => item.marca === marca);
-            setVeiculoFiltrado(resultado);
-            if (isVeiculoFiltrado) {
-                if (isContadorVeiculos === 0) {
-                    setContadorVeiculos(isContadorVeiculos + 1);
-                    return;
-                }
-                setVeiculoFiltrado([...isVeiculoFiltrado, ...resultado]);
-            }
+  const [veiculos, setVeiculos] = useState([]);
+  const [veiculosFiltrados, setVeiculosFiltrados] = useState(veiculos);
+  const [contadorVeiculosFiltrados, setContadorVeiculosFiltrados] = useState(0);
+  const marcasAutomoveis = [...new Set(veiculos.map((item) => item.marca))];
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/veiculos")
+      .then((res) => {
+        setVeiculos(res.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const filtrarVeiculos = (marcaSelecionada, resultadoFiltro) => {
+    if (marcaSelecionada === "ResetViews") {
+      setVeiculosFiltrados([...resultadoFiltro]);
+      if (contadorVeiculosFiltrados === 1) {
+        setContadorVeiculosFiltrados(contadorVeiculosFiltrados - 1);
+      }
+      if (resultadoFiltro.length === 0) {
+        setVeiculosFiltrados([...veiculos]);
+      }
+    } else {
+      const veiculosFiltradosPorMarca = veiculos.filter(
+        (item) => item.marca === marcaSelecionada
+      );
+      setVeiculosFiltrados(veiculosFiltradosPorMarca);
+      if (veiculosFiltrados) {
+        if (contadorVeiculosFiltrados === 0) {
+          setContadorVeiculosFiltrados(contadorVeiculosFiltrados + 1);
+          return;
         }
-    };
-    
-    return (
-        <div className={Style.container}>
-          <CheckboxFilter
-            style={Style}
-            automoveis={automoveis}
-            isVeiculoFiltrado={isVeiculoFiltrado}
-            setVeiculoFiltrado={setVeiculoFiltrado}
-            filtrarVeiculos={filtrarVeiculos}
-          />
-          <Card Style={Style} veiculos={isVeiculoFiltrado} />
-        </div>
-  )
+        setVeiculosFiltrados([
+          ...veiculosFiltrados,
+          ...veiculosFiltradosPorMarca,
+        ]);
+      }
+    }
+  };
+
+  return (
+    <div className={Style.container}>
+      <CheckboxFilter
+        style={Style}
+        automoveis={marcasAutomoveis}
+        veiculosFiltrados={veiculosFiltrados}
+        setVeiculosFiltrados={setVeiculosFiltrados}
+        filtrarVeiculos={filtrarVeiculos}
+      />
+      <Card style={Style} veiculos={veiculosFiltrados} />
+    </div>
+  );
 }

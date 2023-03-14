@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 app.use(cors({
     origin: ['http://localhost:3000']
 }))
-app.use('/', Router);
+app.use('/veiculo', Router);
 app.use((req, res) => {
     res.status(404)
 })

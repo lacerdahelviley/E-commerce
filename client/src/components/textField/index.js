@@ -8,6 +8,10 @@ const Input = styled.input`
   width: 20rem;
   height: 2rem;
   border: none;
+  padding: 0 20px;
+  &:focus{
+    drop-shadow(0px 0px 3px lightblue);
+  }
 `;
 
 const TextField = ({placeholder, type}) => {

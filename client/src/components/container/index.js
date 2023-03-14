@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Style from "./container.module.scss";
-import CheckboxFilter from "./checkboxFilter";
 import Card from "./card";
+import SwitchButton from "components/switchButton";
+import { ControlledCarousel } from "components/carousel";
 
 export default function Container() {
   const [veiculos, setVeiculos] = useState([]);
   const [veiculosFiltrados, setVeiculosFiltrados] = useState(veiculos);
   const [contadorVeiculosFiltrados, setContadorVeiculosFiltrados] = useState(0);
   const marcasAutomoveis = [...new Set(veiculos.map((item) => item.marca))];
+
   useEffect(() => {
     axios
-      .get("http://localhost:4000/veiculos")
+      .get("http://localhost:4000/veiculo/list")
       .then((res) => {
         setVeiculos(res.data);
       })
@@ -24,7 +26,10 @@ export default function Container() {
     if (marcaSelecionada === "ResetViews") {
       setVeiculosFiltrados([...resultadoFiltro]);
       if (contadorVeiculosFiltrados === 1) {
-        setContadorVeiculosFiltrados(contadorVeiculosFiltrados - 1);
+        setContadorVeiculosFiltrados(
+          contadorVeiculosFiltrados - 1,
+          ...resultadoFiltro
+        );
       }
       if (resultadoFiltro.length === 0) {
         setVeiculosFiltrados([...veiculos]);
@@ -46,17 +51,19 @@ export default function Container() {
       }
     }
   };
-
   return (
     <div className={Style.container}>
-      <CheckboxFilter
+      <SwitchButton
         style={Style}
         automoveis={marcasAutomoveis}
         veiculosFiltrados={veiculosFiltrados}
         setVeiculosFiltrados={setVeiculosFiltrados}
         filtrarVeiculos={filtrarVeiculos}
       />
-      <Card style={Style} veiculos={veiculosFiltrados} />
+      <div className={Style.carousel}>
+        <ControlledCarousel />
+        <Card style={Style} veiculos={veiculosFiltrados} />
+      </div>
     </div>
   );
 }

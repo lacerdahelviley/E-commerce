@@ -1,0 +1,22 @@
+.logo{
+    width: 160px;
+}
+.container{
+    display: flex;
+    width: 100vw;
+    gap: 20px;
+}
+.logo__container{
+    display: flex;
+    flex-flow: column;
+    width: 25%;
+    gap: 20px;
+}
+.img__container{
+    display: flex;
+    justify-content: center;
+}
+.text__logo__container{
+    color: #ffffff;
+    text-align: justify;
+}

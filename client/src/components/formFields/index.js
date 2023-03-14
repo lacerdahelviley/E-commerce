@@ -9,10 +9,11 @@ export function Title({ title, Style }) {
   return <h3 className={Style.form__title}>{title}</h3>;
 }
 
-export function FormFields({ placeholder, value, onChange, disabled, type }) {
+export function FormFields({ placeholder, value, onChange, disabled, type, name }) {
   return (
     <Form.Group className="mb-3" controlId="formGroupEmail">
       <Form.Control
+        name={name}
         type={type}
         placeholder={placeholder}
         disabled={disabled}
@@ -76,9 +77,9 @@ export function ImageSelector({ label, value, onChange }) {
   );
 }
 
-export function Buttons({ type, variant, name, onClick }) {
+export function Buttons({ type, variant, name, onClick, Style }) {
   return (
-    <Button type={type} variant={variant} onClick={onClick}>
+    <Button type={type} variant={variant} onClick={onClick} Style={Style}>
       {name}
     </Button>
   );

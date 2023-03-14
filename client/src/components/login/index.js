@@ -22,7 +22,6 @@ export default function Login() {
   const logon = () => {
     if (isEmail === "user@tora.com.br" && isPassword === "123456*e") {
       <NavLink to="home" />;
-      console.log("TESTE");
     } else {
       console.log("Email ou senha incorretos");
     }

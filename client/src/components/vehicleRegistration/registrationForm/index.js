@@ -30,17 +30,22 @@ export default function RegistrationForm() {
     infoOpicionais: "",
     infoAdicionais: "",
     imagem: "",
+    status: "0",
   });
 
   const config = {
     headers: {
-      "Content-Type":"application/json"
-    }
-  }
+      "Content-Type": "application/json",
+    },
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:4000/veiculo", JSON.stringify(formValues), config);
+      const res = await axios.post(
+        "http://localhost:4000/veiculo/cadastro",
+        JSON.stringify(formValues),
+        config
+      );
       console.log(res.data);
     } catch (error) {
       console.error(error);
@@ -115,7 +120,7 @@ export default function RegistrationForm() {
                 <div className={Style.form__media}>
                   <FormFields
                     name={"Torque"}
-                    placeholder={"Torque (N.m)"}
+                    placeholder={"Torque (kgf.m)"}
                     type={"text"}
                     value={formValues.torque}
                     onChange={(e) =>
@@ -158,7 +163,10 @@ export default function RegistrationForm() {
                   placeholder={"Relação diferencial"}
                   value={formValues.relacaoDiferencial}
                   onChange={(e) =>
-                    setFormValues({ ...formValues, relacaoDiferencial: e.target.value })
+                    setFormValues({
+                      ...formValues,
+                      relacaoDiferencial: e.target.value,
+                    })
                   }
                 />
                 <FormFields
@@ -167,7 +175,10 @@ export default function RegistrationForm() {
                   placeholder={"Suspensão"}
                   value={formValues.tipo_suspensao}
                   onChange={(e) =>
-                    setFormValues({ ...formValues, tipo_suspensao: e.target.value })
+                    setFormValues({
+                      ...formValues,
+                      tipo_suspensao: e.target.value,
+                    })
                   }
                 />
               </div>
@@ -175,18 +186,21 @@ export default function RegistrationForm() {
                 <div className={Style.form__media}>
                   <FormFields
                     name={"EntreEixos"}
-                    placeholder={"Entre-eixos"}
+                    placeholder={"Entre-eixos (mm)"}
                     type={"number"}
                     value={formValues.entreEixos}
                     onChange={(e) =>
-                      setFormValues({ ...formValues, entreEixos: e.target.value })
+                      setFormValues({
+                        ...formValues,
+                        entreEixos: e.target.value,
+                      })
                     }
                   />
                   <FormFields
                     name={"Placa"}
                     placeholder={"Placa do veículo"}
                     type={"text"}
-                    value={formValues.placa}
+                    value={formValues.placa.toUpperCase()}
                     onChange={(e) =>
                       setFormValues({ ...formValues, placa: e.target.value })
                     }
@@ -197,7 +211,10 @@ export default function RegistrationForm() {
                     type={"number"}
                     value={formValues.capMaxCombustivel}
                     onChange={(e) =>
-                      setFormValues({ ...formValues, capMaxCombustivel: e.target.value })
+                      setFormValues({
+                        ...formValues,
+                        capMaxCombustivel: e.target.value,
+                      })
                     }
                   />
                 </div>
@@ -219,7 +236,10 @@ export default function RegistrationForm() {
                   Style={Style}
                   value={formValues.infoOpicionais}
                   onChange={(e) =>
-                    setFormValues({ ...formValues, infoOpicionais: e.target.value })
+                    setFormValues({
+                      ...formValues,
+                      infoOpicionais: e.target.value,
+                    })
                   }
                 />
                 <TextArea
@@ -229,7 +249,10 @@ export default function RegistrationForm() {
                   Style={Style}
                   value={formValues.infoAdicionais}
                   onChange={(e) =>
-                    setFormValues({ ...formValues, infoAdicionais: e.target.value })
+                    setFormValues({
+                      ...formValues,
+                      infoAdicionais: e.target.value,
+                    })
                   }
                 />
               </div>

@@ -4,11 +4,11 @@ import db from '../config/database';
 const Router = express.Router();
 
 // METODO POST //
-Router.post('/veiculo', (req, res) => {
+Router.post('/cadastro', (req, res) => {
     const veiculo = req.body;
     console.log(veiculo)
-    const { placa, nome, marca, modelo, ano, cambio, potencia, torque, km, cor, cabine, relacaoDiferencial, tipo_suspensao, entreEixos, capMaxCombustivel, valor, infoOpicionais, infoAdicionais, imagem } = veiculo;
-    if (!placa || !nome || !marca || !modelo || !ano || !cambio || !potencia || !torque || !km || !cor || !cabine || !relacaoDiferencial || !tipo_suspensao || !entreEixos || !capMaxCombustivel || !valor || !infoOpicionais || !infoAdicionais) {
+    const { placa, nome, marca, modelo, ano, cambio, potencia, torque, km, cor, cabine, relacaoDiferencial, tipo_suspensao, entreEixos, capMaxCombustivel, valor, infoOpicionais, infoAdicionais, status } = veiculo;
+    if (!placa || !nome || !marca || !modelo || !ano || !cambio || !potencia || !torque || !km || !cor || !cabine || !relacaoDiferencial || !tipo_suspensao || !entreEixos || !capMaxCombustivel || !valor) {
         return res.status(400).json({ error: "Dados inválidos!" });
     }
 
@@ -31,7 +31,70 @@ Router.post('/veiculo', (req, res) => {
         valor,
         infoOpicionais,
         infoAdicionais,
+        status
+    })
+        .then(function (insertedRows) {
+            const id = insertedRows[0];
+            return res.status(201).json({ id, ...veiculo });
+        })
+        .catch(function (err) {
+            console.error(err.message);
+            return res.status(500).json({ error: "Erro ao inserir o veículo." });
+        });
+});
+
+Router.post('/upload-image', (req, res) => {
+    const veiculo = req.body;
+    const imagem = veiculo;
+
+    db('veiculos').insert({
         imagem
+    })
+        .then(function (insertedRows) {
+            const id = insertedRows[0];
+            return res.status(201).json({ id, ...veiculo });
+        })
+        .catch(function (err) {
+            console.error(err.message)
+            return res.status(500).json({ error: "Erro no servidor" });
+        });
+})
+
+Router.post('/venda', (req, res) => {
+    const veiculo = req.body;
+    console.log(veiculo)
+    const {
+        placa,
+        nome, marca,
+        modelo, ano,
+        cambio, potencia,
+        torque, km,
+        cor, cabine,
+        relacaoDiferencial, tipo_suspensao,
+        entreEixos, capMaxCombustivel,
+        valor, infoOpicionais,
+        infoAdicionais, status } = veiculo;
+
+    db('veiculos').insert({
+        placa,
+        nome,
+        marca,
+        modelo,
+        ano,
+        cambio,
+        potencia,
+        torque,
+        km,
+        cor,
+        cabine,
+        relacaoDiferencial,
+        tipo_suspensao,
+        entreEixos,
+        capMaxCombustivel,
+        valor,
+        infoOpicionais,
+        infoAdicionais,
+        status
     })
         .then(function (insertedRows) {
             const id = insertedRows[0];
@@ -44,7 +107,7 @@ Router.post('/veiculo', (req, res) => {
 });
 
 // METODO GET
-Router.get('/veiculos', async (req, res) => {
+Router.get('/list', async (req, res) => {
     try {
         const veiculos = await db.select('*').table('veiculos');
         res.status(200).json(veiculos);
@@ -54,7 +117,7 @@ Router.get('/veiculos', async (req, res) => {
 });
 
 // METODO GET POR ID
-Router.get('/veiculos/:id', async (req, res) => {
+Router.get('/list/:id', async (req, res) => {
     const placa: string = req.params.id
     db('veiculos').where({ placa }).first().then((veiculo) => {
         if (!veiculo) {
@@ -69,7 +132,7 @@ Router.get('/veiculos/:id', async (req, res) => {
 });
 
 // METODO PUT
-Router.put('/veiculo/:id', async (req, res) => {
+Router.put('/:id', async (req, res) => {
     const placaVeiculo: string = req.params.id;
     const veiculo = req.body;
     const { placa, nome, marca, modelo, ano, cambio, potencia, torque, km, cor, cabine, relacaoDiferencial, tipo_suspensao, entreEixos, capMaxCombustivel, valor, infoOpicionais, infoAdicionais, imagem } = veiculo;
@@ -107,7 +170,7 @@ Router.put('/veiculo/:id', async (req, res) => {
 })
 
 //METODO DELETE
-Router.delete('/veiculo/:id', async (req, res) => {
+Router.delete('/:id', async (req, res) => {
     const placa: string = req.params.id;
     db("veiculos").where({ placa }).del()
         .then(() => {

@@ -1,17 +1,32 @@
 import express from 'express';
 import db from '../config/database';
+import multer from 'multer';
 
 const Router = express.Router();
 
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "uploads/")
+    },
+    filename: function (req, file, cb) {
+        const ext = file.originalname.split('.')[1];
+        const newArchiveName = require('crypto')
+            .randomBytes(64)
+            .toString('hex');
+            cb(null, `${newArchiveName}.${ext}`)
+    }
+})
+const upload = multer({ storage });
 // METODO POST //
-Router.post('/cadastro', (req, res) => {
+Router.post('/cadastro',upload.array("imagem", 10), (req, res) => {
     const veiculo = req.body;
-    console.log(veiculo)
     const { placa, nome, marca, modelo, ano, cambio, potencia, torque, km, cor, cabine, relacaoDiferencial, tipo_suspensao, entreEixos, capMaxCombustivel, valor, infoOpicionais, infoAdicionais, status } = veiculo;
     if (!placa || !nome || !marca || !modelo || !ano || !cambio || !potencia || !torque || !km || !cor || !cabine || !relacaoDiferencial || !tipo_suspensao || !entreEixos || !capMaxCombustivel || !valor) {
         return res.status(400).json({ error: "Dados inválidos!" });
     }
 
+    const imagem = req.file ? req.file.filename : null;
+    console.log("conversão de imagem", imagem)
     db('veiculos').insert({
         placa,
         nome,
@@ -31,11 +46,12 @@ Router.post('/cadastro', (req, res) => {
         valor,
         infoOpicionais,
         infoAdicionais,
-        status
+        status,
+        imagem
     })
         .then(function (insertedRows) {
             const id = insertedRows[0];
-            return res.status(201).json({ id, ...veiculo });
+            return res.status(201).json({ id, ...veiculo, imagem });
         })
         .catch(function (err) {
             console.error(err.message);
@@ -43,22 +59,6 @@ Router.post('/cadastro', (req, res) => {
         });
 });
 
-Router.post('/upload-image', (req, res) => {
-    const veiculo = req.body;
-    const imagem = veiculo;
-
-    db('veiculos').insert({
-        imagem
-    })
-        .then(function (insertedRows) {
-            const id = insertedRows[0];
-            return res.status(201).json({ id, ...veiculo });
-        })
-        .catch(function (err) {
-            console.error(err.message)
-            return res.status(500).json({ error: "Erro no servidor" });
-        });
-})
 
 Router.post('/venda', (req, res) => {
     const veiculo = req.body;

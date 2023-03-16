@@ -35,7 +35,7 @@ export default function RegistrationForm() {
 
   const config = {
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "multipart/form-data",
     },
   };
   const handleSubmit = async (e) => {
@@ -57,7 +57,7 @@ export default function RegistrationForm() {
         <div className={Style.form__container}>
           <label className={Style.form__title__field}>
             <Title title={"Cadastro de veículos"} Style={Style} />
-            <form className={Style.form__field} onSubmit={handleSubmit}>
+            <form className={Style.form__field} encType={'multipart/form-data'} onSubmit={handleSubmit}>
               <div className={Style.form}>
                 <FormFields
                   type={"text"}
@@ -258,7 +258,16 @@ export default function RegistrationForm() {
               </div>
 
               <div className={Style.buttons__field}>
-                <ImageSelector label={"Selecionar múltiplas imagens"} />
+                <ImageSelector
+                  label={"Selecionar múltiplas imagens"}
+                  value={formValues.imagem}
+                  onChange={(e) =>
+                    setFormValues({
+                      ...formValues,
+                      imagem: e.target.value,
+                    })
+                  }
+                />
                 <Buttons
                   type={"reset"}
                   variant={"outline-danger"}

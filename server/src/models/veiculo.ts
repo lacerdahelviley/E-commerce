@@ -18,7 +18,10 @@ interface Veiculo {
     valor: number,
     infoOpicionais: string,
     infoAdicionais: string,
-    imagem: string,
+    imagem: {
+        name: string;
+        base64: string;
+    },
 }
 export default Veiculo
 

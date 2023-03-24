@@ -4,7 +4,10 @@ import Router from './router/router'
 
 const PORT = process.env.PORT || 4000
 const HOSTNAME = process.env.HOSTNAME || 'http://localhost'
+const bodyParse = require('body-parser');
 const app = express();
+app.use(bodyParse.json({ limit: '100mb'}));
+app.use(bodyParse.urlencoded({ limit: '100mb', extend: true}))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.get('/', (req, res) => {

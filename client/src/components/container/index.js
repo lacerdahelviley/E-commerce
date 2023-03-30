@@ -21,6 +21,7 @@ export default function Container() {
         console.error(error);
       });
   }, []);
+  console.log(veiculos)
 
   const filtrarVeiculos = (marcaSelecionada, resultadoFiltro) => {
     if (marcaSelecionada === "ResetViews") {

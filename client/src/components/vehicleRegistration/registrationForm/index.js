@@ -10,6 +10,7 @@ import {
 import axios from "axios";
 
 export default function RegistrationForm() {
+  const [selectedImages, setSelectedImages] = useState([])
   const [formValues, setFormValues] = useState({
     placa: "",
     nome: "",
@@ -27,7 +28,7 @@ export default function RegistrationForm() {
     entreEixos: "",
     capMaxCombustivel: "",
     valor: "",
-    infoOpicionais: "",
+    infoOpcionais: "",
     infoAdicionais: "",
     status: "0",
   });
@@ -38,55 +39,24 @@ export default function RegistrationForm() {
     },
   };
   const handleImagesChange = (e) => {
-    const selectedImages = Array.from(e.target.files);
-    setFormValues({
-      ...formValues,
-      imagens: selectedImages,
-    });
+    const files = Array.from(e.target.files);
+    setSelectedImages(files);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const formData = new FormData();
-      // formData.append("placa", formValues.placa);
-      // formData.append("nome", formValues.nome);
-      // formData.append("marca", formValues.marca);
-      // formData.append("modelo", formValues.modelo);
-      // formData.append("ano", formValues.ano);
-      // formData.append("cambio", formValues.cambio);
-      // formData.append("potencia", formValues.potencia);
-      // formData.append("torque", formValues.torque);
-      // formData.append("km", formValues.km);
-      // formData.append("cor", formValues.cor);
-      // formData.append("cabine", formValues.cabine);
-      // formData.append("relacaoDiferencial", formValues.relacaoDiferencial);
-      // formData.append("tipo_suspensao", formValues.tipo_suspensao);
-      // formData.append("entreEixos", formValues.entreEixos);
-      // formData.append("capMaxCombustivel", formValues.capMaxCombustivel);
-      // formData.append("valor", formValues.valor);
-      // formData.append("infoOpicionais", formValues.infoOpicionais);
-      // formData.append("infoAdicionais", formValues.infoAdicionais);
-      // formData.append("status", formValues.status);
-      const teste = [];
-      for (let i = 0; i < formValues.imagens.length; i++) {
-        teste.push(formValues.imagens[i]);
+      for (let i = 0; i < selectedImages.length; i++) {
+        formData.append('imagem', selectedImages[i]);
       }
-      const teste2 = [{
-        fieldname: "imagem",
-        originalname: "Civic-teste2.jpg",
-        encoding: "7bit",
-        mimetype: "image/jpeg",
-        destination: "uploads/",
-        filename: "1679680427393-Civic-teste2.jpg",
-        path: "uploads\\1679680427393-Civic-teste2.jpg",
-        size: 51450,
-      }]
-      formData.append("files", teste2 );
-      console.log(formData);
+      for (const [key, value] of Object.entries(formValues)){
+        formData.append(key, value);
+      }
+      
       await axios.post(
         "http://localhost:4000/veiculo/cadastro",
-        formValues,
+        // formValues,
         formData,
         config
       );
@@ -281,11 +251,11 @@ export default function RegistrationForm() {
                   placeholder={"Informações opcionais"}
                   label={"Informações opcionais"}
                   Style={Style}
-                  value={formValues.infoOpicionais}
+                  value={formValues.infoOpcionais}
                   onChange={(e) =>
                     setFormValues({
                       ...formValues,
-                      infoOpicionais: e.target.value,
+                      infoOpcionais: e.target.value,
                     })
                   }
                 />

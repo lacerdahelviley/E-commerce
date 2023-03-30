@@ -16,7 +16,7 @@ interface Veiculo {
     entreEixos: number,
     capMaxCombustivel: number,
     valor: number,
-    infoOpicionais: string,
+    infoOpcionais: string,
     infoAdicionais: string,
     imagem: {
         name: string;

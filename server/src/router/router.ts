@@ -3,30 +3,38 @@ import db from '../config/database';
 import multer from 'multer';
 
 const Router = express.Router();
+let imageName: string;
 
 const upload = multer({
     storage: multer.diskStorage({
         destination: (req, file, cb) => {
             cb(null, 'uploads/')
         },
-        filename:(req, file, cb) => {
-            cb(null, `${Date.now()}-${file.originalname}`)
+        filename: (req, file, cb) => {
+            cb(null, `${file.originalname}`)
+            imageName = `${file.originalname}`
+            return file.originalname
         },
+        
     }),
-    limits:{
-        fileSize: 100 * 1024 * 1024,
-    }
+    limits: {
+        fileSize: 10 * 1024 * 1024,
+    }    
 })
 
+
 // METODO POST //
-Router.post('/cadastro', upload.array("imagem", 10), (req, res) => {
+Router.post('/cadastro', upload.array("imagem", 10), (req,  res) => {
+    
     const veiculo = req.body;
-    const imagem = req.files
-    console.log(imagem)
-    const { placa, nome, marca, modelo, ano, cambio, potencia, torque, km, cor, cabine, relacaoDiferencial, tipo_suspensao, entreEixos, capMaxCombustivel, valor, infoOpicionais, infoAdicionais, status } = veiculo;
-    // if (!placa || !nome || !marca || !modelo || !ano || !cambio || !potencia || !torque || !km || !cor || !cabine || !relacaoDiferencial || !tipo_suspensao || !entreEixos || !capMaxCombustivel || !valor) {
-    //     return res.status(400).json({ error: "Dados inválidos!" });
-    // }
+    const imagem = req.files;
+    imageName;
+    console.log(imageName)
+
+    const { placa, nome, marca, modelo, ano, cambio, potencia, torque, km, cor, cabine, relacaoDiferencial, tipo_suspensao, entreEixos, capMaxCombustivel, valor, infoOpcionais, infoAdicionais, status } = veiculo;
+   if (!placa || !nome || !marca || !modelo || !ano || !cambio || !potencia || !torque || !km || !cor || !cabine || !relacaoDiferencial || !tipo_suspensao || !entreEixos || !capMaxCombustivel || !valor) {
+        return res.status(400).json({ error: "Dados inválidos!" });
+   }
 
     db('veiculos').insert({
         placa,
@@ -45,10 +53,10 @@ Router.post('/cadastro', upload.array("imagem", 10), (req, res) => {
         entreEixos,
         capMaxCombustivel,
         valor,
-        infoOpicionais,
+        infoOpcionais,
         infoAdicionais,
         status,
-        imagem: `../../uploads/${__filename}`
+        imagem: `../../uploads/${imageName}`
     })
         .then(function (insertedRows) {
             const id = insertedRows[0];
@@ -58,12 +66,12 @@ Router.post('/cadastro', upload.array("imagem", 10), (req, res) => {
             console.error(err.message);
             return res.status(500).json({ error: "Erro ao inserir o veículo." });
         });
+    // console.log(upload)
 });
 
 
 Router.post('/venda', (req, res) => {
     const veiculo = req.body;
-    console.log(veiculo)
     const {
         placa,
         nome, marca,
@@ -73,7 +81,7 @@ Router.post('/venda', (req, res) => {
         cor, cabine,
         relacaoDiferencial, tipo_suspensao,
         entreEixos, capMaxCombustivel,
-        valor, infoOpicionais,
+        valor, infoOpcionais,
         infoAdicionais, status } = veiculo;
 
     db('veiculos').insert({
@@ -93,7 +101,7 @@ Router.post('/venda', (req, res) => {
         entreEixos,
         capMaxCombustivel,
         valor,
-        infoOpicionais,
+        infoOpcionais,
         infoAdicionais,
         status
     })
@@ -136,8 +144,8 @@ Router.get('/list/:id', async (req, res) => {
 Router.put('/:id', async (req, res) => {
     const placaVeiculo: string = req.params.id;
     const veiculo = req.body;
-    const { placa, nome, marca, modelo, ano, cambio, potencia, torque, km, cor, cabine, relacaoDiferencial, tipo_suspensao, entreEixos, capMaxCombustivel, valor, infoOpicionais, infoAdicionais, imagem } = veiculo;
-    if (!placa || !nome || !marca || !modelo || !ano || !cambio || !potencia || !torque || !km || !cor || !cabine || !relacaoDiferencial || !tipo_suspensao || !entreEixos || !capMaxCombustivel || !valor || !infoOpicionais || !infoAdicionais || !imagem) {
+    const { placa, nome, marca, modelo, ano, cambio, potencia, torque, km, cor, cabine, relacaoDiferencial, tipo_suspensao, entreEixos, capMaxCombustivel, valor, infoOpcionais, infoAdicionais, imagem } = veiculo;
+    if (!placa || !nome || !marca || !modelo || !ano || !cambio || !potencia || !torque || !km || !cor || !cabine || !relacaoDiferencial || !tipo_suspensao || !entreEixos || !capMaxCombustivel || !valor || !infoOpcionais || !infoAdicionais || !imagem) {
         return res.status(400).json({ error: "Dados inválidos!" });
     }
     db("veiculos").where({ placa }).update({
@@ -157,7 +165,7 @@ Router.put('/:id', async (req, res) => {
         entreEixos: entreEixos,
         capMaxCombustivel: capMaxCombustivel,
         valor: valor,
-        infoOpicionais: infoOpicionais,
+        infoOpcionais: infoOpcionais,
         infoAdicionais: infoAdicionais,
         imagem: imagem
     })
